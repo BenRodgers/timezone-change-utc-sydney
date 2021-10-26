@@ -1,9 +1,6 @@
 from datetime import timedelta, datetime
 
 
-
-
-
 def get_schedule(dt):
     '''
     Takes in a UTC datetime, assessing AEST/AEDT and returns a cron schedule
