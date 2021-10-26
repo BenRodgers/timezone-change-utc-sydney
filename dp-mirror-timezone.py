@@ -17,13 +17,10 @@ def get_schedule(dt):
     current_sydney_time = dt + timedelta(hours=10)
 
     # Check if current time is between the First Sunday of April: 2am and First Sunday of October: 2am
-
     print(current_sydney_time)
     if current_sydney_time <= next_weekday(datetime(dt.year, 4, 1, 2, 0, 0), 6) or current_sydney_time >= next_weekday(datetime(dt.year, 10, 1, 2, 0, 0), 6):
-#        print("0 19 * * *")
         return "0 19 * * *"
 
-#    print("0 20 * * *")
     return "0 20 * * *"
 
 def next_weekday(d, weekday):
@@ -63,7 +60,7 @@ assert get_schedule(datetime(2021, 4, 3, 18, 0, 0)) == "0 20 * * *", "Test 7 - F
 assert get_schedule(datetime(2021, 4, 3, 19, 0, 0)) == "0 20 * * *", "Test 8 - First Sunday of April - AEST 4/4/2021 03:00:00 = UTC 2021-04-03 16:00:00"
 
 # Test October UTC Time
-assert get_schedule(datetime(2021, 10, 2, 12, 0, 0)) == "0 20 * * *", "Test 9 - First Sunday of October - AEST 2021-10-03 02:00:00 = UTC 2021-10-02 15:00:00"
+assert get_schedule(datetime(2021, 10, 2, 12, 0, 0)) == "0 20 * * *", "Test 9 - First Sunday of October - AEST 2021-10-03 02:00:00 = UTC 2021-10-02 12:00:00"
 assert get_schedule(datetime(2021, 10, 2, 13, 0, 0)) == "0 20 * * *", "Test 10 - First Sunday of October - AEST 2021-10-03 02:00:00 = UTC 2021-10-02 15:00:00"
 assert get_schedule(datetime(2021, 10, 2, 14, 0, 0)) == "0 20 * * *", "Test 11 - First Sunday of October - AEST 2021-10-03 03:00:00 = UTC 2021-10-02 16:00:00"
 assert get_schedule(datetime(2021, 10, 2, 15, 0, 0)) == "0 20 * * *", "Test 12 - First Sunday of October - AEST 2021-10-03 01:00:00 = UTC 2021-10-02 14:00:00"
@@ -71,11 +68,3 @@ assert get_schedule(datetime(2021, 10, 2, 16, 0, 0)) == "0 19 * * *", "Test 13 -
 assert get_schedule(datetime(2021, 10, 2, 17, 0, 0)) == "0 19 * * *", "Test 14 - First Sunday of October - AEST 2021-10-03 01:00:00 = UTC 2021-10-02 14:00:00"
 assert get_schedule(datetime(2021, 10, 2, 18, 0, 0)) == "0 19 * * *", "Test 15 - First Sunday of October - AEST 2021-10-03 01:00:00 = UTC 2021-10-02 14:00:00"
 assert get_schedule(datetime(2021, 10, 2, 18, 0, 0)) == "0 19 * * *", "Test 16 - First Sunday of October - AEST 2021-10-03 01:00:00 = UTC 2021-10-02 14:00:00"
-
-# Different times of year
-#assert get_schedule(datetime(2021, 2, 1, 2, 0, 0)) == "0 19 * * *", "Test 9 - Start of year"
-#assert get_schedule(datetime(2021, 6, 3, 2, 0, 0)) == "0 20 * * *", "Test 10 - Midyear"
-#assert get_schedule(datetime(2021, 11, 1, 2, 0, 0)) == "0 19 * * *", "Test 11 - End of year"
-
-#assert get_schedule(datetime(2021, 10, 3, 2, 0, 0)) == "0 20 * * *", "Test 12 - First Sunday of October"
-#assert get_schedule(datetime(2021, 10, 3, 2, 0, 0)) == "0 20 * * *", "Test 13 - First Sunday of October"
